@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     //list of all buildings
-    private Stack<Building> allBuildings = new Stack<Building>();
+    private List<Building> allBuildings = new List<Building>();
 
     //stack of undo and redo commands
     private Stack<ICommand> _Undocommands = new Stack<ICommand>();
@@ -33,25 +34,18 @@ public class GameManager : MonoBehaviour
     public void OnSelectContent() {
 
     }
-
-    public void OnInitContent()
+    public void Place()
     {
 
     }
-    public void OnDeinitContent()
-    {
-
-    }
-    public void OnDeployContent()
-    {
-
-    }
-#endregion
+    #endregion
 
     #region UndoRedo
     //undoredo
     public void OnUndo() {
-
+        if(_Undocommands.Count != 0){
+            
+        }
     }
 
     public void OnRedo() {
@@ -61,9 +55,7 @@ public class GameManager : MonoBehaviour
 
     #region Buttton Functions
     //Button Functions
-    public void Place() {
 
-    }
     public void Upgrade()
     {
 
@@ -82,4 +74,28 @@ public class GameManager : MonoBehaviour
     }
     #endregion  
 
+    //command pattern
+    public void ExecuteCommand(BuildingActions command, Building buildinh) {
+
+
+    }
+
+    //factory pattern
+    public void CreateBuilding(BuildingEnum buildingType, Vector3 position) {
+        switch (buildingType) {
+            case BuildingEnum.RedBuilding:
+                allBuildings.Add(new RedBuilding(position));
+                break;
+            case BuildingEnum.BlueBuildinng:
+                allBuildings.Add(new BlueBuilding(position));
+                break;
+            case BuildingEnum.GreenBuilding:
+                allBuildings.Add(new GreenBuilding(position));
+                break;
+            case BuildingEnum.YellowBuilding:
+                allBuildings.Add(new YellowBuilding(position));
+                break;
+        }
+    }
 }
+

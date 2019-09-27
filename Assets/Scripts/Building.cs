@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //this uses the factory method
-enum BuildingEnum
+public enum BuildingEnum
 {
     RedBuilding,
     BlueBuildinng,
@@ -14,27 +14,31 @@ enum BuildingEnum
 
 public abstract class Building
 {
+    //creates and sets an id for each building
     public Building() {
-        id = ++totalBuildings;
+        id = ++idtracker;
     }
 
-    public static int totalBuildings { get; private set; }
+    public static int idtracker { get; private set; }
     public int id { get; private set; }
     protected int level { get; set; }
 
+    //build instantiates the object in the game scene
     public abstract void Build(Vector3 pos);
 }
 
 #region Red
 public class RedBuilding : Building {
 
+    public GameObject prefab = (GameObject)Resources.Load("prefabs/Red", typeof(GameObject));
+
     public RedBuilding(Vector3 pos):base() {
         level = 0;
         Build(pos);
     }
-
-    public override void Build(Vector3 pos) {
-
+    public override void Build(Vector3 pos)
+    {
+        GameObject.Instantiate(prefab, pos, Quaternion.identity);
     }
 }
 #endregion 
@@ -42,6 +46,8 @@ public class RedBuilding : Building {
 #region Blue
 public class BlueBuilding : Building
 {
+    public GameObject prefab = (GameObject)Resources.Load("prefabs/Blue", typeof(GameObject));
+
     public BlueBuilding(Vector3 pos) : base()
     {
         level = 0;
@@ -49,24 +55,25 @@ public class BlueBuilding : Building
     }
     public override void Build(Vector3 pos)
     {
-
+        GameObject.Instantiate(prefab, pos, Quaternion.identity);
     }
 
 }
-#endregion  
+#endregion
 
 #region Green
 public class GreenBuilding : Building
 {
+    public GameObject prefab = (GameObject)Resources.Load("prefabs/Green", typeof(GameObject));
+
     public GreenBuilding(Vector3 pos) : base()
     {
         level = 0;
         Build(pos);
     }
-
     public override void Build(Vector3 pos)
     {
-
+        GameObject.Instantiate(prefab, pos, Quaternion.identity);
     }
 
 }
@@ -75,15 +82,16 @@ public class GreenBuilding : Building
 #region Yellow
 public class YellowBuilding : Building
 {
+    public GameObject prefab = (GameObject)Resources.Load("prefabs/Yellow", typeof(GameObject));
+
     public YellowBuilding(Vector3 pos) : base()
     {
         level = 0;
         Build(pos);
     }
-
     public override void Build(Vector3 pos)
     {
-
+        GameObject.Instantiate(prefab, pos, Quaternion.identity);
     }
 
 }
