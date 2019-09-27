@@ -4,19 +4,14 @@ using UnityEngine;
 
 public sealed class SaveManager
 {
-    //singleton pattern here
+    #region SingletonCode
+    //singleton pattern begins here
     private static readonly SaveManager instance = new SaveManager();
-    static SaveManager()
-    {
-    }
-    private SaveManager()
-    {
-    }
-
-    public static SaveManager Instance
-    {
-        get { return instance; }
-    }
+    static SaveManager(){}
+    private SaveManager(){}
+    public static SaveManager Instance{ get { return instance; }}
+    //single pattern ends here
+    #endregion  
 
     public void Save()
     {

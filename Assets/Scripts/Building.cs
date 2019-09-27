@@ -12,7 +12,6 @@ enum BuildingEnum
     None,
 }
 
-
 public abstract class Building
 {
     public Building() {
@@ -26,7 +25,7 @@ public abstract class Building
     public abstract void Build(Vector3 pos);
 }
 
-
+#region Red
 public class RedBuilding : Building {
 
     public RedBuilding(Vector3 pos):base() {
@@ -38,7 +37,9 @@ public class RedBuilding : Building {
 
     }
 }
+#endregion 
 
+#region Blue
 public class BlueBuilding : Building
 {
     public BlueBuilding(Vector3 pos) : base()
@@ -52,7 +53,9 @@ public class BlueBuilding : Building
     }
 
 }
+#endregion  
 
+#region Green
 public class GreenBuilding : Building
 {
     public GreenBuilding(Vector3 pos) : base()
@@ -67,7 +70,9 @@ public class GreenBuilding : Building
     }
 
 }
+#endregion  
 
+#region Yellow
 public class YellowBuilding : Building
 {
     public YellowBuilding(Vector3 pos) : base()
@@ -82,3 +87,5 @@ public class YellowBuilding : Building
     }
 
 }
+
+#endregion

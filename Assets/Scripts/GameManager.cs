@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+    #region Interfacing Functions
     //Interfacing Functions
     public void OnSelectContent() {
 
@@ -45,8 +46,9 @@ public class GameManager : MonoBehaviour
     {
 
     }
+#endregion
 
-
+    #region UndoRedo
     //undoredo
     public void OnUndo() {
 
@@ -55,8 +57,9 @@ public class GameManager : MonoBehaviour
     public void OnRedo() {
 
     }
+    #endregion  
 
-
+    #region Buttton Functions
     //Button Functions
     public void Place() {
 
@@ -77,4 +80,6 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    #endregion  
+
 }
