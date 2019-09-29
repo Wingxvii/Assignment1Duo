@@ -14,12 +14,12 @@ public enum BuildingActions {
     Delete,
 }
 
-
 class PlaceBuilding : ICommand {
     private Building buildingElement;
 
     public PlaceBuilding(Building building) {
-
+        buildingElement = building;
+        ExecuteAction();
     }
 
     public void ExecuteAction() {
@@ -36,6 +36,8 @@ class UpgradeBuilding : ICommand
     private Building buildingElement;
 
     public UpgradeBuilding(Building building) {
+        buildingElement = building;
+        ExecuteAction();
     }
 
     public void ExecuteAction()
@@ -53,7 +55,8 @@ class DeleteBuilding : ICommand
     private Building buildingElement;
 
     public DeleteBuilding(Building building) {
-
+        buildingElement = building;
+        ExecuteAction();
     }
     public void ExecuteAction()
     {

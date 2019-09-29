@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     //list of all buildings
     private List<Building> allBuildings = new List<Building>();
 
-    //stack of undo and redo commands
+    //stack of undo and redo commands (NOTE: THESE ALREADY HAVE OBJS ATTACHED TO THEM)
     private Stack<ICommand> _Undocommands = new Stack<ICommand>();
     private Stack<ICommand> _Redocommands = new Stack<ICommand>();
 
@@ -75,8 +75,17 @@ public class GameManager : MonoBehaviour
     #endregion  
 
     //command pattern
-    public void ExecuteCommand(BuildingActions command, Building buildinh) {
+    public void ExecuteCommand(BuildingActions command, Building building) {
+        //clear redo
+        if (_Redocommands.Count != 0) { _Redocommands.Clear(); }
 
+        switch (command) {
+            case BuildingActions.Place:
+                _Undocommands.Push(new PlaceBuilding(building));
+                break;
+
+
+        }
 
     }
 
