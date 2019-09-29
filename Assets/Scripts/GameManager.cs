@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //interfacing tools
+    public GameObject selectedObject;
+
+
     //list of all buildings
     private List<Building> allBuildings = new List<Building>();
 
@@ -74,20 +78,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion  
 
-    //command pattern
-    public void ExecuteCommand(BuildingActions command, Building building) {
-        //clear redo
-        if (_Redocommands.Count != 0) { _Redocommands.Clear(); }
-
-        switch (command) {
-            case BuildingActions.Place:
-                _Undocommands.Push(new PlaceBuilding(building));
-                break;
-
-
-        }
-
-    }
 
     //factory pattern
     public void CreateBuilding(BuildingEnum buildingType, Vector3 position) {

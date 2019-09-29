@@ -25,20 +25,43 @@ public abstract class Building
 
     //build instantiates the object in the game scene
     public abstract void Build(Vector3 pos);
+
+    //command pattern
+    public ICommand ExecuteCommand(BuildingActions command)
+    {
+        switch (command)
+        {
+            case BuildingActions.Place:
+                return new PlaceBuilding(this);
+                break;
+            case BuildingActions.Upgrade:
+                return new PlaceBuilding(this);
+                break;
+            case BuildingActions.Delete:
+                return new PlaceBuilding(this);
+                break;
+            default:
+                return null;
+                break;
+        }
+
+    }
+
+
 }
 
 #region Red
 public class RedBuilding : Building {
 
     public GameObject prefab = (GameObject)Resources.Load("prefabs/Red", typeof(GameObject));
-
+    public GameObject self;
     public RedBuilding(Vector3 pos):base() {
         level = 0;
         Build(pos);
     }
     public override void Build(Vector3 pos)
     {
-        GameObject.Instantiate(prefab, pos, Quaternion.identity);
+        self = GameObject.Instantiate(prefab, pos, Quaternion.identity);
     }
 }
 #endregion 
@@ -47,6 +70,7 @@ public class RedBuilding : Building {
 public class BlueBuilding : Building
 {
     public GameObject prefab = (GameObject)Resources.Load("prefabs/Blue", typeof(GameObject));
+    public GameObject self;
 
     public BlueBuilding(Vector3 pos) : base()
     {
@@ -55,7 +79,7 @@ public class BlueBuilding : Building
     }
     public override void Build(Vector3 pos)
     {
-        GameObject.Instantiate(prefab, pos, Quaternion.identity);
+        self = GameObject.Instantiate(prefab, pos, Quaternion.identity);
     }
 
 }
@@ -65,6 +89,7 @@ public class BlueBuilding : Building
 public class GreenBuilding : Building
 {
     public GameObject prefab = (GameObject)Resources.Load("prefabs/Green", typeof(GameObject));
+    public GameObject self;
 
     public GreenBuilding(Vector3 pos) : base()
     {
@@ -73,7 +98,7 @@ public class GreenBuilding : Building
     }
     public override void Build(Vector3 pos)
     {
-        GameObject.Instantiate(prefab, pos, Quaternion.identity);
+        self = GameObject.Instantiate(prefab, pos, Quaternion.identity);
     }
 
 }
@@ -83,6 +108,7 @@ public class GreenBuilding : Building
 public class YellowBuilding : Building
 {
     public GameObject prefab = (GameObject)Resources.Load("prefabs/Yellow", typeof(GameObject));
+    public GameObject self;
 
     public YellowBuilding(Vector3 pos) : base()
     {
@@ -91,7 +117,7 @@ public class YellowBuilding : Building
     }
     public override void Build(Vector3 pos)
     {
-        GameObject.Instantiate(prefab, pos, Quaternion.identity);
+        self = GameObject.Instantiate(prefab, pos, Quaternion.identity);
     }
 
 }
